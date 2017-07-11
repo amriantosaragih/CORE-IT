@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <title>View Barang</title>
+
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/starter-template.css}" rel="stylesheet" media="screen"/>
+
+</head>
+
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="home.html">Library</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a th:href="@{/allBarang}">Barang</a> </li>
+                <li><a th:href="@{/allPengguna}">Pengguna</a></li>
+                <li><a th:href="@{/allTransaksi}">Transaksi</a></li>
+            </ul>
+        </div>
+    </div>
+</nav><br/><br/><center>
+<div class="container">
+
+    <div class= "row">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Id Barang     :</label>
+                    <div class="col-sm-10">
+                        <p th:text="${barang.id}"></p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Nama Barang   :</label>
+                    <div class="col-sm-10">
+                        <p th:text="${barang.nama}"></p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Jenis Barang  :</label>
+                    <div class="col-sm-10">
+                        <p th:text="${barang.jenis}"></p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Harga Barang  :</label>
+                    <div class="col-sm-10">
+                        <p th:text="${barang.harga}"></p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Stok       :</label>
+                    <div class="col-sm-10">
+                        <p th:text="${barang.stok}"></p>
+                    </div>
+                </div>
+
+                <div class="pull-center action-buttons">
+                    <a th:href="${'/barang/edit/'+barang.id}">Edit</a>
+                    <a th:href="${'/barang/delete/'+barang.id}" class="trash">Delete</a>
+                </div>
+
+        </div>
+</div><!-- /.container -->
+</center>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script th:src="@{js/jquery.min.js}"></script>
+<script th:src="@{js/bootstrap.min.js}"></script>
+</body>
+</html>

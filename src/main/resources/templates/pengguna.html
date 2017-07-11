@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <title>Pengguna</title>
+
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/starter-template.css}" rel="stylesheet" media="screen"/>
+
+</head>
+
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="home.html">Library</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a th:href="@{/allBarang}">Barang</a> </li>
+                <li><a th:href="@{/allPengguna}">Pengguna</a></li>
+                <li><a th:href="@{/allTransaksi}">Transaksi</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="panel-body" th:if="${not #lists.isEmpty(pengguna)}">
+        <ul class="list-group">
+            <li class="list-group-item">
+                <table class="table table-striped">
+                    <tr>
+                        <th>Id Pengguna</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Jenis Kelamin</th>
+                        <th>Username</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr th:each="penggunas:${pengguna}">
+                        <td th:text="${penggunas.user_id}"></td>
+                        <td th:text="${penggunas.first_name}"></td>
+                        <td th:text="${penggunas.last_name}"></td>
+                        <td th:text="${penggunas.gender}"></td>
+                        <td th:text="${penggunas.username}"></td>
+                        <td>
+                            <div class="pull-right action-buttons">
+                                <a th:href="${'/pengguna/view/'+penggunas.user_id}" class="flag"><span class="glyphicon glyphicon-flag"></span></a>
+                                <a th:href="${'/pengguna/edit/'+penggunas.user_id}"><span class="glyphicon glyphicon-pencil"></span></a>
+                                <a th:href="${'/pengguna/delete/'+penggunas.user_id}" class="trash"><span class="glyphicon glyphicon-trash"></span></a>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <center><a th:href="@{/pengguna/create}">Tambah Data Pengguna</a></center>
+            </li>
+        </ul>
+    </div>
+</div><!-- /.container -->
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script th:src="@{js/jquery.min.js}"></script>
+<script th:src="@{js/bootstrap.min.js}"></script>
+</body>
+</html>
